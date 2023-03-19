@@ -12,12 +12,20 @@ const app = express();
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://memories-react-front.onrender.com",
+  })
+);
 
 app.use("/posts", postRoutes);
 app.use("/user", userRouter);
 
 const PORT = process.env.PORT || 5000;
+
+app.get("/", (req, res) => {
+  res.send("home");
+});
 
 mongoose
   .connect(process.env.CONNECTION_URL, {
