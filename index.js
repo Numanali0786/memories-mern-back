@@ -12,6 +12,11 @@ const app = express();
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
+
+// testing
+// app.use(cors());
+
+// deploying
 app.use(
   cors({
     origin: "https://memories-react-front.onrender.com",
